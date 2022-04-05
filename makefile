@@ -1,4 +1,4 @@
-.PHONY: doc
+.PHONY: doc zip
 all: doc zip
 
 clean:
