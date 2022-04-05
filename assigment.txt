@@ -1,0 +1,59 @@
+Implementace algoritmu "Odd-Even Merge Sort"
+Pomocí knihovny Open MPI implementujte v jazyce C/C++ algoritmus Odd-Even Merge Sort pro řazení posloupnosti osmi čísel tak, jak byl uveden na přednášce PRL.
+
+Deadline
+10. 4. 2022
+
+Vstup
+Vstupem je posloupnost osmi náhodných čísel uložených v souboru.
+
+Soubor numbers
+Soubor numbers obsahující čísla velikosti 1 byte, která jdou bez mezery za sebou. Pro příklad vytvoření tohoto souboru prostudujte soubor Test, ve kterém je ukázáno vytvoření takovéto posloupnosti náhodných čísel a její uložení do souboru pomocí utility dd. V případě tohoto projektu nastavíte "numbers" napevno na 8. Tato utilita generuje náhodná čísla v rozsahu určeném velikostí bloku. Při bloku 1B jsou hodnoty v rozsahu 0-255. Vygenerovaná čísla jsou pak přesměrována do souboru. Vznikne tedy další soubor s náhodnými znaky jdoucími bez mezery za sebou. Po otevření v libovolném textovém editoru se hodnoty tváří jako náhodné ascii znaky, které by však měly být chápany jako celá čísla. Soubor je v tomto případě chápan jako binární.
+
+Výstup
+Výstup na stdout se skládá ze dvou částí:
+
+Jednotlivé načtené neseřazené hodnoty v jednom řádku oddělené mezerou (vypsat po načtení prvním procesorem).
+Jednotlivé seřazené hodnoty oddělené novým řádkem (od nejmenšího po největší).
+Příklad výstupu
+4 68 1 54 ... 
+1
+4
+54
+68
+...
+Postup
+Vytvořte testovací skript test, který bude řídit testování. Tento skript bude mít tyto vlastnosti:
+
+Bude pojmenován test nebo test.sh.
+Skript vytvoří soubor numbers s 8mi náhodnými čísly a následně spustí program se správným počtem procesorů. Skript nakonec smaže vytvořenou binárku a soubor numbers. Vzhledem ke strojové kontrole výsledků se v odevzdané verzi kódu nebudou vyskytovat žádné jiné výstupy než uvedené a ze stejných důvodů je třeba dodržet výše uvedené body týkající se testovacího skriptu. Za nedodržení těchto požadavků budou strhávány body.
+
+Implementace
+Algoritmus implementujte v jazyce C/C++ pomocí knihovny Open MPI.
+
+POZOR!! Současná verze nainstalovaná na Merlinovi takto umožní spustit jen dvanáct procesů (odpovídajícíh počtu jader). Protože ale v dalších projektech budete potřebovat spouštět více procesů, je třeba použít parametr -oversubscribe.
+
+ mpirun -oversubscribe -np 16 hello         #np- number of procesors 
+Dokumentace
+Součástí řešení je dokumentace, která bude o rozsahu maximálně 3 strany (rozumné a odůvodněné překročení limitu stran není důvod k bodové srážce) funkčního textu.
+
+Do dokumentace nedávejte:
+
+Úvodní stranu, obsah, popis zadání.
+V dokumentaci popište:
+
+Rozbor a analýzu algoritmu, odvoďte jeho teoretickou složitost (časovou a prostorovou složitost, celkovou cenu). Uvedené vzorce slovně popište, včetně jejich proměnných.
+Implementaci. Propojení jednotlivých procesů, jejich synchronizaci a celkové fungování systému pro osm hodnot na vstupu.
+Závěr, ve kterém zhodnotíte dosažené výsledky.
+Odevzdání
+Do wisu se odevzdává jeden archiv xlogin00.{tar|tgz|zip}, který bude velký do 1MB, a který obsahuje:
+
+zdrojový kód- oems.{c|cpp},
+hlavička- oems.h (pokud ji využijete),
+testovací shellový skript- {test|test.sh},
+dokumentaci- xlogin00.pdf,
+nic jiného...
+Platí, že kvalita každé z části vzhledem k požadavkům má vliv na bodové ohodnocení . Počítejte s tím, že veškerá uvedená jména souborů jsou case sensitive.
+
+Hodnocení
+Způsob možné reklamace projektu bude zveřejněn později.
